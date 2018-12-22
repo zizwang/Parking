@@ -5,6 +5,7 @@
     <title>停車場管理系統</title>
 </head>
 <body>
+    <h1>停車場管理系統</h1>
     <form action="register-check.php" method="post">
         <label for="Username">帳號</label>
         <input type="text" name="Username" id="Username" required="required" /><br />

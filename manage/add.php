@@ -5,7 +5,7 @@
     <title>停車場管理系統</title>
 </head>
 <body>
-    <h1>停車場管理</h1>
+    <h1>停車場管理系統</h1>
     <?php
         $username = $_POST['Username'];
         $password = $_POST['Password'];

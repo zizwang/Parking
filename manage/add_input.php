@@ -5,11 +5,16 @@
     <title>停車場管理系統</title>
 </head>
 <body>
-    <h1>停車場管理</h1>
+    <h1>停車場管理系統</h1>
     <?php
         $username = $_POST['Username'];
         $password = $_POST['Password'];
     ?>
+    <form action="index.php" method="post">
+        <input type="hidden" name="Username" value="<?=$username?>" />
+        <input type="hidden" name="Password" value="<?=$password?>" />
+        <input type="submit" name="Submit" value="Back" />
+    </form>
     <form action="add.php" method="post">
     	<p>*為必須輸入</p>
     	<label for="Name">*名稱</label>

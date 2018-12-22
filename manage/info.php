@@ -5,19 +5,27 @@
     <title>停車場管理系統</title>
 </head>
 <body>
-    <h1>停車場管理</h1>
+    <h1>停車場管理系統</h1>
     <?php
         $name = $_POST['Name'];
-
+        $username = $_POST['Username'];
+        $password = $_POST['Password'];
+    ?>
+    <form action="index.php" method="post">
+        <input type="hidden" name="Username" value="<?=$username?>" />
+        <input type="hidden" name="Password" value="<?=$password?>" />
+        <input type="submit" name="Submit" value="Back" />
+    </form>
+    <?php
         $db = new mysqli('mysql.cs.ccu.edu.tw', 'wtc105u', 'rqXexGSzNw', 'wtc105u_parking');
         $db->query("set names utf8");
 
-        $query = "SELECT Name, Address, Charge, Total, Remain FROM Private WHERE Name = ?";
+        $query = "SELECT Address, Charge, Total, Remain FROM Private WHERE Name = ?";
         $stmt = $db->prepare($query);
         $stmt->bind_param('s', $name);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($name, $address, $charge, $total, $remain);
+        $stmt->bind_result($address, $charge, $total, $remain);
         $stmt->fetch();
 
         $max = $total;

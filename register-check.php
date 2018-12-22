@@ -5,6 +5,7 @@
     <title>停車場管理系統</title>
 </head>
 <body>
+    <h1>停車場管理系統</h1>
     <?php
         $username = $_POST['Username'];
         $password1 = $_POST['Password1'];
@@ -32,7 +33,7 @@
 
         $query = "INSERT INTO Users VALUES (?, ?)";
         $stmt = $db->prepare($query);
-        $stmt->bind_param('sss', $username, $password1);
+        $stmt->bind_param('ss', $username, $password1);
         $stmt->execute();
     ?>
     <p>註冊成功！</p>

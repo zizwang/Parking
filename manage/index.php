@@ -5,7 +5,7 @@
     <title>停車場管理系統</title>
 </head>
 <body>
-    <h1>停車場管理</h1>
+    <h1>停車場管理系統</h1>
     <?php
         // ini_set("display_errors", "On");
         // error_reporting(E_ALL & ~E_NOTICE);
@@ -34,13 +34,15 @@
         $stmt->bind_result($name);
 
         echo "<form action=\"info.php\" method=\"post\">";
+        echo "<input type=\"hidden\" name=\"Username\" value=\"".$username."\" />";
+        echo "<input type=\"hidden\" name=\"Password\" value=\"".$password."\" />";
         while ($stmt->fetch())
             echo "<input type=\"submit\" name=\"Name\" value=\"".$name."\" /><br />";
         echo "</form>";
     ?>
     <form action="add_input.php" method="post">
         <input type="hidden" name="Username" value="<?=$username?>" />
-        <input type="hidden" name="Password" value="<?=$password?>">
+        <input type="hidden" name="Password" value="<?=$password?>" />
         <input type="submit" name="Submit" value="新增停車場" />
     </form>
 </body>
