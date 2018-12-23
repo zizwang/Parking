@@ -9,30 +9,27 @@
     <?php
         $username = $_POST['Username'];
         $password = $_POST['Password'];
-        $name = $_POST['Name'];
-        $remain = $_POST['Remain'];
-
-        $db = new mysqli('mysql.cs.ccu.edu.tw', 'wtc105u', 'rqXexGSzNw', 'wtc105u_parking');
-        $db->query("set names utf8");
-
-        $query = "UPDATE Private SET Remain = ? WHERE Name = ?";
-        $stmt = $db->prepare($query);
-        $stmt->bind_param('is', $remain, $name);
-        $stmt->execute();
     ?>
-    <p>更新成功！</p>
-    <form action="info.php" method="post">
+    <form action="add.php" method="post">
+    	<p>*為必須輸入</p>
+    	<label for="Name">*名稱</label>
+    	<input type="text" name="Name" id="Name" required="required" /><br />
+    	<label for="Address">*地址</label>
+    	<input type="text" name="Address" id="Address" required="required" /><br />
+    	<label for="Charge">收費方式</label>
+    	<input type="text" name="Charge" id="Charge" /><br />
+    	<label for="Total">總車位數</label>
+    	<input type="number" name="Total" id="Total" min="0" max="999" /><br />
         <input type="hidden" name="Username" value="<?=$username?>" />
         <input type="hidden" name="Password" value="<?=$password?>" />
-        <input type="hidden" name="Name" value="<?=$name?>" />
-        <input type="submit" name="Submit" value="返回" />
+        <input type="submit" name="Submit" value="新增停車場" />
     </form>
-    <form action="index.php" method="post">
+    <form action="../manage/index.php" method="post">
         <input type="hidden" name="Username" value="<?=$username?>" />
         <input type="hidden" name="Password" value="<?=$password?>" />
         <input type="submit" name="Submit" value="主頁" />
     </form>
-    <form action="../add/index.php" method="post">
+    <form action="index.php" method="post">
         <input type="hidden" name="Username" value="<?=$username?>" />
         <input type="hidden" name="Password" value="<?=$password?>" />
         <input type="submit" name="Submit" value="新增" />

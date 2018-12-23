@@ -9,6 +9,7 @@
         $name = $_POST['Name'];
         $username = $_POST['Username'];
         $password = $_POST['Password'];
+        $oldname = $name;
     ?>
     <form action="index.php" method="post">
         <input type="hidden" name="Username" value="<?=$username?>" />
@@ -29,26 +30,27 @@
         $stmt->fetch();
 
         $max = $total;
-        if (!isset($charge) || $charge == "")
-            $charge = "未提供資訊";
-        if (!isset($total) || $total == 0) {
-            $total = "未提供資訊";
-            $max = 999;
-        }
-        echo "<p>名稱: ".$name."</p>";
-        echo "<p>地址: ".$address."</p>";
-        echo "<p>收費方式: ".$charge."</p>";
-        echo "<p>總車位數: ".$total."</p>";
+        if (!isset($charge))
+            $charge = "";
+        if (!isset($total))
+            $total = 0;
     ?>
-    <form action="update.php" method="post">
+    <form action="edit.php" method="post">
+        <p>*為必須輸入</p>
+        <label for="Name">*名稱</label>
+        <input type="text" name="Name" id="Name" required="required" value="<?=$name?>" /><br />
+        <label for="Address">*地址</label>
+        <input type="text" name="Address" id="Address" required="required" value="<?=$address?>" /><br />
+        <label for="Charge">收費方式</label>
+        <input type="text" name="Charge" id="Charge" value="<?=$charge?>" /><br />
+        <label for="Total">總車位數</label>
+        <input type="number" name="Total" id="Total" min="0" max="999" value="<?=$total?>" /><br />
         <input type="hidden" name="Username" value="<?=$username?>" />
         <input type="hidden" name="Password" value="<?=$password?>" />
-        <label for="Remain">剩餘車位: </label>
-        <input type="number" name="Remain" id="Remain" min="0" max="<?=$max?>" value="<?=$remain?>" />
-        <input type="hidden" name="Name" value="<?=$name?>" />
-        <input type="submit" name="Update" value="Update" />
+        <input type="hidden" name="Oldname" value="<?=$oldname?>" />
+        <input type="submit" name="Submit" value="完成" />
     </form>
-    <form action="index.php" method="post">
+    <form action="../manage/index.php" method="post">
         <input type="hidden" name="Username" value="<?=$username?>" />
         <input type="hidden" name="Password" value="<?=$password?>" />
         <input type="submit" name="Submit" value="主頁" />
@@ -58,7 +60,7 @@
         <input type="hidden" name="Password" value="<?=$password?>" />
         <input type="submit" name="Submit" value="新增" />
     </form>
-    <form action="../edit/index.php" method="post">
+    <form action="index.php" method="post">
         <input type="hidden" name="Username" value="<?=$username?>" />
         <input type="hidden" name="Password" value="<?=$password?>" />
         <input type="submit" name="Submit" value="編輯" />
@@ -67,6 +69,5 @@
         <input type="hidden" name="Username" value="<?=$username?>" />
         <input type="hidden" name="Password" value="<?=$password?>" />
         <input type="submit" name="Submit" value="刪除" />
-    </form>
 </body>
 </html>

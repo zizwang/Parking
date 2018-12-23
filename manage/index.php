@@ -40,10 +40,25 @@
             echo "<input type=\"submit\" name=\"Name\" value=\"".$name."\" /><br />";
         echo "</form>";
     ?>
-    <form action="add_input.php" method="post">
+    <form action="index.php" method="post">
         <input type="hidden" name="Username" value="<?=$username?>" />
         <input type="hidden" name="Password" value="<?=$password?>" />
-        <input type="submit" name="Submit" value="新增停車場" />
+        <input type="submit" name="Submit" value="主頁" />
+    </form>
+    <form action="../add/index.php" method="post">
+        <input type="hidden" name="Username" value="<?=$username?>" />
+        <input type="hidden" name="Password" value="<?=$password?>" />
+        <input type="submit" name="Submit" value="新增" />
+    </form>
+    <form action="../edit/index.php" method="post">
+        <input type="hidden" name="Username" value="<?=$username?>" />
+        <input type="hidden" name="Password" value="<?=$password?>" />
+        <input type="submit" name="Submit" value="編輯" />
+    </form>
+    <form action="../delete/index.php" method="post">
+        <input type="hidden" name="Username" value="<?=$username?>" />
+        <input type="hidden" name="Password" value="<?=$password?>" />
+        <input type="submit" name="Submit" value="刪除" />
     </form>
 </body>
 </html>
